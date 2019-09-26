@@ -1,0 +1,44 @@
+CC     = "E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"UR5Model_sfun.obj"\
+	"c1_UR5Model.obj"\
+	"c2_UR5Model.obj"\
+	"c3_UR5Model.obj"\
+	"UR5Model_sfun_registry.obj"\
+	"lccstub.obj"\
+	"UR5Model_sfun.def"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmwblas.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmx.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmex.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmat.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libut.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libemlrt.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"E:\Program Files\Softwares\MATLAB 2014\lib\win64\libippmwipt.lib"\
+
+INCLUDE_PATH= -I"E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\include64"  -I"E:\Program Files\Softwares\MATLAB 2014\extern\include"  -I"E:\Program Files\Softwares\MATLAB 2014\simulink\include"  -I"E:\Program Files\Softwares\MATLAB 2014\stateflow\c\mex\include"  -I"E:\Program Files\Softwares\MATLAB 2014\rtw\c\src"  -I"F:\University\MSc\Term 1\Mechanics of Robotic Systems\Simulations\UR5\slprj\_sfprj\UR5Model\_self\sfun\src" 
+ 
+
+UR5Model_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o UR5Model_sfun.mexw64 @UR5Model_sfun.lmko
+UR5Model_sfun.obj :	"UR5Model_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "UR5Model_sfun.c"
+c1_UR5Model.obj :	"c1_UR5Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_UR5Model.c"
+c2_UR5Model.obj :	"c2_UR5Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_UR5Model.c"
+c3_UR5Model.obj :	"c3_UR5Model.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_UR5Model.c"
+UR5Model_sfun_registry.obj :	"UR5Model_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "UR5Model_sfun_registry.c"
+lccstub.obj :	"E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "E:\Program Files\Softwares\MATLAB 2014\sys\lcc64\lcc64\mex\lccstub.c"
